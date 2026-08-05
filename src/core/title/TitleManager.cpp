@@ -37,9 +37,19 @@ namespace core {
     }
 
     void TitleManager::initNewTitle(uint32_t newTitleId) {
-        m_currentTitle.reset();
+        if (m_currentTitle) {
+            m_currentTitle->onClose();
+            m_currentTitle.reset();
+        }
+
+        m_currentTitleId = m_platform.getCurrentTitleId();
+        m_currentTitleVersion = m_platform.getTitleVersion();
 
         TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform, m_input);
+
+        if (m_currentTitle) {
+            m_currentTitle->onOpen();
+        }
     }
 }
 

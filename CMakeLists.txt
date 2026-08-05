@@ -6,7 +6,9 @@ include(XdkXex)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/../../XBOX360_SDK_21256.3 ${CMAKE_BINARY_DIR}/xdk)
 add_library(XboxPlatform INTERFACE
-        src/core/title/RegisteredTitle.h)
+        src/core/title/RegisteredTitle.h
+        src/core/title/BL2Title.h
+        src/core/title/BL2Title.cpp)
 
 target_include_directories(XboxPlatform
         INTERFACE

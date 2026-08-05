@@ -8,7 +8,7 @@ namespace core {
     template<typename Derived>
     class RegisteredTitle : public Title {
     public:
-        using Title::Title;
+        RegisteredTitle(platform::IPlatform &platform, platform::IInput &input) : Title(platform, input) {}
 
         static bool registerSelf(uint32_t titleId) {
             TitleFactory::registerTitle(titleId, [](platform::IPlatform &p, platform::IInput &i) {

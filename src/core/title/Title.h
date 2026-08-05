@@ -1,10 +1,12 @@
 #pragma once
 #include "cstdint"
+#include <platform/IPlatform.h>
+#include <platform/IInput.h>
 
 namespace core {
     class Title {
     public:
-        Title(uint32_t titleId, uint32_t titleVersion);
+        Title(platform::IPlatform &platform, platform::IInput &input) : m_platform(platform), m_input(input) {}
 
         virtual ~Title();
 
@@ -20,6 +22,10 @@ namespace core {
         bool requestOpen();
         bool requestClose();
         bool requestReboot();
+
+    protected:
+        platform::IPlatform &m_platform;
+        platform::IInput &m_input;
     private:
         uint32_t m_titleId;
         uint32_t m_titleVersion;
