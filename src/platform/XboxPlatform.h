@@ -22,7 +22,7 @@ namespace platform {
         ~XboxPlatform() override;
         void reboot() override;
         void notify(const std::wstring &message) override;
-        uint32_t getCurrentTitleId() override;
+        uint32_t getCurrentTitleId() override { return XamGetCurrentTitleId(); }
         bool isDevkit() override;
     };
 }

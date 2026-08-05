@@ -12,8 +12,4 @@ namespace platform {
     void XboxPlatform::notify(const std::wstring &message) {
 
     }
-
-    uint32_t XboxPlatform::getCurrentTitleId() {
-        return XamGetCurrentTitleId();
-    }
 }
