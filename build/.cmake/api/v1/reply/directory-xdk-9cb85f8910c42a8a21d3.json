@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "xdk",
+		"source" : "C:/Users/pixel/Documents/360/XBOX360_SDK_21256.3"
+	}
+}

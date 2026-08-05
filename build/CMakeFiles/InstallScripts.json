@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/cmake_install.cmake",
+		"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/xdk/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

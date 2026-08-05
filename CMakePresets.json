@@ -1,0 +1,20 @@
+﻿{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "xdk",
+      "displayName": "Xbox 360 (XDK)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "toolchainFile": "${sourceDir}/cmake/XdkXenon.toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_MAKE_PROGRAM": "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "xdk", "configurePreset": "xdk" }
+  ]
+}
+
