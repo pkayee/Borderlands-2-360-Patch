@@ -19,7 +19,7 @@ namespace core {
         uint32_t m_currentTitleId;
         std::string m_currentTitleVersion;
         HANDLE m_handle;
-        std::unique_ptr<Title> m_currentTitle;
+        static Title* m_currentTitle;
         platform::IPlatform &m_platform;
         platform::IInput &m_input;
     };

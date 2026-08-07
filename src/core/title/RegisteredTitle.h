@@ -2,6 +2,7 @@
 
 #include "Title.h"
 #include "TitleFactory.h"
+#include <iostream>
 
 
 namespace core {
@@ -12,6 +13,7 @@ namespace core {
         : Title(platform, input) {}
 
         static bool registerSelf(uint32_t titleId) {
+            std::cout << "\n" << "registerSelf called with TID: " << titleId;
             TitleFactory::registerTitle(titleId, &RegisteredTitle::create);
             return true;
         }

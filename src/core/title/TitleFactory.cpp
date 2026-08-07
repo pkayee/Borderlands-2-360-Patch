@@ -6,7 +6,7 @@
 
 namespace core {
     void TitleFactory::registerTitle(uint32_t titleId, Creator creator) {
-        std::cerr << "Title:" << titleId << " Registered";
+        std::cerr << "\n" << "Title:" << titleId << " Registered";
         registry()[titleId] = creator;
     }
 
@@ -14,10 +14,13 @@ namespace core {
         std::map<uint32_t, Creator>::iterator it = registry().find(titleId);
 
         if (it == registry().end() || it->second == NULL) {
-            std::cerr << "Could not find title in registry!";
+            std::cerr << "\n" "Could not find title in registry!";
             return NULL;
         }
-        std::cerr << "Title found in registry!";
+        if (!it->second) {
+            std::cerr << titleId << "found but creator function is null";
+        }
+        std::cerr << "\n" << "Title:" << titleId <<" found in registry";
         return it->second(platform, input);
     }
 

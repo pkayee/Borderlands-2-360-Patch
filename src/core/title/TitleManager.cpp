@@ -20,6 +20,7 @@ extern "C" {
 }
 
 namespace core {
+    Title* TitleManager::m_currentTitle = NULL;
     TitleManager::TitleManager(platform::IPlatform &platform, platform::IInput &input)
         : m_platform(platform), m_input(input), m_running(true) {
     }
@@ -31,7 +32,7 @@ namespace core {
     void TitleManager::run() {
         while (m_running) {
             uint32_t newTitleId = m_platform.getCurrentTitleId();
-            if (newTitleId != m_currentTitleId) {
+            if (newTitleId != 0 && newTitleId != m_currentTitleId) {
                 initNewTitle(newTitleId);
             }
         }
@@ -40,18 +41,32 @@ namespace core {
     void TitleManager::initNewTitle(uint32_t newTitleId) {
         if (m_currentTitle) {
             m_currentTitle->onClose();
-            m_currentTitle.reset();
+            delete m_currentTitle;
+            m_currentTitle = NULL;
         }
-        std::cerr << "Initializing title:" << newTitleId << std::endl;
+        std::cerr << "\n" << "Initializing title:" << newTitleId << std::endl;
 
-        m_currentTitleId = m_platform.getCurrentTitleId();
+        m_currentTitleId = newTitleId;
         m_currentTitleVersion = m_platform.getTitleUpdateVersion();
+        std::cout << "TitleUpdate = " << m_currentTitleVersion;
 
-        TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform, m_input);
+        m_currentTitle = TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform, m_input);
 
         if (m_currentTitle) {
-            std::cerr << "Hooking title on open";
-            m_currentTitle->onOpen();
+            std::cerr << "\n" << "Hooking title on open";
+            try {
+                m_currentTitle->onOpen();
+            }
+            catch (const std::exception& e) {
+                std::cerr << "\nException in onOpen" << e.what();
+            }
+            catch (...) {
+                std::cerr << "\nUnknown exception caught in onOpen";
+            }
+        }
+        else {
+            std::cerr << "\n" << "TitleFactory::create returned NULL for ID "
+                  << m_currentTitleId << std::endl;
         }
     }
 }

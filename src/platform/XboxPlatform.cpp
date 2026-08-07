@@ -34,7 +34,7 @@ namespace platform {
     }
 
     std::string XboxPlatform::getTitleUpdateVersion() {
-        std::cerr << "Platform title version called";
+        std::cerr << "\n" << "Platform title version called ";
         HANDLE hGameModule = GetModuleHandle(NULL);
 
         LDR_DATA_TABLE_ENTRY *pDataTable = static_cast<LDR_DATA_TABLE_ENTRY *>(hGameModule);

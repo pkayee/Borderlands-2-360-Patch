@@ -39,3 +39,12 @@ target_link_libraries(BL2_PATCH
         XboxTitles
 )
 
+if(MSVC)
+    # Microsoft Visual Studio / XDK compiler
+    target_compile_options(BL2_PATCH PRIVATE /EHsc)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    # GCC or Clang (e.g., MinGW/MSYS2) - exceptions are enabled by default,
+    # but you can explicitly ensure standard exception flags if needed:
+    target_compile_options(BL2_PATCH PRIVATE -fexceptions)
+endif()
+
