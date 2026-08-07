@@ -1,0 +1,128 @@
+{
+	"globsDependent" : 
+	[
+		{
+			"expression" : "C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/*.cpp",
+			"paths" : 
+			[
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/core/games/BL2Title.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/core/games/DashTitle.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/core/title/Title.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/core/title/TitleFactory.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/core/title/TitleManager.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/main.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/platform/XboxInput.cpp",
+				"C:/Users/pixel/Documents/360/Projs/BL2_PATCH/src/platform/XboxPlatform.cpp"
+			],
+			"recurse" : true
+		}
+	],
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.1.2/CMakeSystem.cmake"
+		},
+		{
+			"path" : "cmake/XdkXenon.toolchain.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Compiler/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Internal/CMakeCXXLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2025.3.1/bin/cmake/win/x64/share/cmake-4.1/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"path" : "cmake/XdkXex.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/pixel/Documents/360/XBOX360_SDK_21256.3/CMakeLists.txt"
+		},
+		{
+			"path" : "third_party/XexUtils/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build",
+		"source" : "C:/Users/pixel/Documents/360/Projs/BL2_PATCH"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}
