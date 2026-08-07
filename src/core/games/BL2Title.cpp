@@ -1,6 +1,7 @@
 #include "BL2Title.h"
 
 namespace games {
+    // when this is ran the title is registered in TitleFactory
     bool BL2Title::s_registered = BL2Title::registerSelf(kBL2TitleId);
 
     void BL2Title::onOpen() {

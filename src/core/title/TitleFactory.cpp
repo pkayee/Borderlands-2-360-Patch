@@ -17,9 +17,11 @@ namespace core {
             std::cerr << "\n" "Could not find title in registry!";
             return NULL;
         }
+
         if (!it->second) {
             std::cerr << titleId << "found but creator function is null";
         }
+
         std::cerr << "\n" << "Title:" << titleId <<" found in registry";
         return it->second(platform, input);
     }

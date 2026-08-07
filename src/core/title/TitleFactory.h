@@ -12,7 +12,10 @@
 namespace core {
     class TitleFactory {
     public:
+        // function pointer that returns our newly constructed derived class
+        // see RegisteredTitle.h for more context
         typedef Title* (*Creator)(platform::IPlatform&, platform::IInput&);
+
         static void registerTitle(uint32_t titleId, Creator creator);
         static Title* create(uint32_t titleId, std::string& titleVersion, platform::IPlatform &platform, platform::IInput &input);
 

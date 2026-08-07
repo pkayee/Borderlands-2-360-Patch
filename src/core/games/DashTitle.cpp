@@ -5,6 +5,7 @@
 #include "DashTitle.h"
 
 namespace games {
+    // when this is ran the title is registered in TitleFactory
     bool DashboardTitle::s_registered = DashboardTitle::registerSelf(kDashboardId);
 
     void DashboardTitle::onClose() {
