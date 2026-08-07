@@ -3,3 +3,17 @@
 //
 
 #include "Title.h"
+
+namespace core {
+    Title::~Title() {
+
+    }
+
+    void Title::render() {
+
+    }
+
+    void Title::update() {
+
+    }
+}

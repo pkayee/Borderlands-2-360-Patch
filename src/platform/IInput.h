@@ -2,6 +2,6 @@
 
 namespace platform {
     class IInput {
-        virtual void poll();
+        virtual void poll() = 0;
     };
 }

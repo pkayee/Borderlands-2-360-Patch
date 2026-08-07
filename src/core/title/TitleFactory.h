@@ -7,16 +7,16 @@
 
 #include "functional"
 #include "Title.h"
-#include "unordered_map"
+#include "map"
 
 namespace core {
     class TitleFactory {
     public:
-        using Creator = std::function<std::unique_ptr<Title>(platform::IPlatform&, platform::IInput&)>;
+        typedef Title* (*Creator)(platform::IPlatform&, platform::IInput&);
         static void registerTitle(uint32_t titleId, Creator creator);
-        static std::unique_ptr<Title> create(uint32_t titleId, uint32_t titleVersion, platform::IPlatform &platform, platform::IInput &input);
+        static Title* create(uint32_t titleId, std::string& titleVersion, platform::IPlatform &platform, platform::IInput &input);
 
     private:
-        static std::unordered_map<uint32_t, Creator>& registry();
+        static std::map<uint32_t, Creator>& registry();
     };
 }

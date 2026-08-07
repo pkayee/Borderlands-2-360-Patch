@@ -1,6 +1,7 @@
-C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/CMakeFiles/XboxPlatform.dir
 C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/CMakeFiles/BL2_PATCH.dir
 C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/CMakeFiles/edit_cache.dir
 C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/CMakeFiles/rebuild_cache.dir
 C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/xdk/CMakeFiles/edit_cache.dir
 C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/xdk/CMakeFiles/rebuild_cache.dir
+C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/third_party/XexUtils/CMakeFiles/edit_cache.dir
+C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/third_party/XexUtils/CMakeFiles/rebuild_cache.dir

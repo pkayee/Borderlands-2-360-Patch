@@ -1,8 +1,9 @@
-//
-// Created by pixel on 8/5/2026.
-//
+#pragma once
 
-#ifndef BL2_PATCH_XBOXINPUT_H
-#define BL2_PATCH_XBOXINPUT_H
+#include <platform/IInput.h>
 
-#endif //BL2_PATCH_XBOXINPUT_H
+namespace platform {
+    class XboxInput : public IInput {
+        void poll();
+    };
+}

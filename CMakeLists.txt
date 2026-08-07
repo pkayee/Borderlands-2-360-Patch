@@ -3,32 +3,39 @@ project(BL2_PATCH CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(XdkXex)
-
 add_subdirectory(${CMAKE_SOURCE_DIR}/../../XBOX360_SDK_21256.3 ${CMAKE_BINARY_DIR}/xdk)
-add_library(XboxPlatform INTERFACE
-        src/core/title/RegisteredTitle.h
-        src/core/title/BL2Title.h
-        src/core/title/BL2Title.cpp)
+add_subdirectory(third_party/XexUtils)
+add_library(XboxPlatform INTERFACE)
+add_library(XboxTitles INTERFACE)
 
 target_include_directories(XboxPlatform
         INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/>
         $<INSTALL_INTERFACE:platform
 )
+target_include_directories(XboxTitles
+        INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/core/>
+        $<INSTALL_INTERFACE:title
+)
 
+file(GLOB_RECURSE BL2_PATCH_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/src/*.cpp")
 
 add_xex(BL2_PATCH
     TYPE       DLL
-    SOURCES    src/main.cpp src/core/title/TitleManager.cpp
+    SOURCES    ${BL2_PATCH_SOURCES}
     ENTRY      DllMain
     CONFIG     "${CMAKE_SOURCE_DIR}/Application.xml"
     USE_XKELIB ON
     XKELIB_DIR "C:/Users/pixel/Documents/360/Xkelib/xkelib"
 )
 
+
 target_link_libraries(BL2_PATCH
         PRIVATE
+        XexUtils
         XboxSDK
         XboxPlatform
+        XboxTitles
 )
 

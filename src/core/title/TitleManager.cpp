@@ -3,6 +3,7 @@
 
 #include "xtl.h"
 #include "cstdint"
+#include "iostream"
 
 extern "C" {
     uint32_t XamGetCurrentTitleId();
@@ -19,15 +20,15 @@ extern "C" {
 }
 
 namespace core {
-    TitleManager::TitleManager(HANDLE titleManagerHandle, platform::IPlatform &platform, platform::IInput &input)
-        : m_handle(titleManagerHandle), m_platform(platform), m_input(input), m_running(true) {
+    TitleManager::TitleManager(platform::IPlatform &platform, platform::IInput &input)
+        : m_platform(platform), m_input(input), m_running(true) {
     }
 
     void TitleManager::init() {
         // check for kernal version will use platform header to check
     }
 
-    void TitleManager::scanTitleIds() {
+    void TitleManager::run() {
         while (m_running) {
             uint32_t newTitleId = m_platform.getCurrentTitleId();
             if (newTitleId != m_currentTitleId) {
@@ -41,13 +42,15 @@ namespace core {
             m_currentTitle->onClose();
             m_currentTitle.reset();
         }
+        std::cerr << "Initializing title:" << newTitleId << std::endl;
 
         m_currentTitleId = m_platform.getCurrentTitleId();
-        m_currentTitleVersion = m_platform.getTitleVersion();
+        m_currentTitleVersion = m_platform.getTitleUpdateVersion();
 
         TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform, m_input);
 
         if (m_currentTitle) {
+            std::cerr << "Hooking title on open";
             m_currentTitle->onOpen();
         }
     }

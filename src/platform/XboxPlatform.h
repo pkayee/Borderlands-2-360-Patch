@@ -2,6 +2,8 @@
 #include "IPlatform.h"
 #include "xtl.h"
 
+#include <XexUtils.h>
+
 extern "C" {
     uint32_t XamGetCurrentTitleId();
 
@@ -19,10 +21,19 @@ extern "C" {
 namespace platform {
     class XboxPlatform : public IPlatform {
     public:
-        ~XboxPlatform() override;
+        XboxPlatform() {};
+        ~XboxPlatform() {};
+
         void reboot() override;
-        void notify(const std::wstring &message) override;
-        uint32_t getCurrentTitleId() override { return XamGetCurrentTitleId(); }
-        bool isDevkit() override;
+        void notify(const std::wstring &message);
+
+        uint32_t getFirmwareVersion();
+        uint32_t getCurrentTitleId() { return XamGetCurrentTitleId(); }
+        std::string getTitleUpdateVersion();
+
+        bool isDevkit();
+    private:
+        XboxPlatform(const XboxPlatform &);
+        XboxPlatform &operator=(const XboxPlatform &);
     };
 }

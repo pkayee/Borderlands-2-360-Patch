@@ -9,14 +9,15 @@
 namespace core {
     class TitleManager {
     public:
-        TitleManager(HANDLE titleManagerHandle, platform::IPlatform &platform, platform::IInput &input);
+        TitleManager(platform::IPlatform &platform, platform::IInput &input);
         void init();
-        void scanTitleIds();
+        void run();
+        void stop() { m_running = false; }
     private:
         void initNewTitle(uint32_t newTitleId);
         bool m_running;
         uint32_t m_currentTitleId;
-        uint32_t m_currentTitleVersion;
+        std::string m_currentTitleVersion;
         HANDLE m_handle;
         std::unique_ptr<Title> m_currentTitle;
         platform::IPlatform &m_platform;

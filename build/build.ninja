@@ -18,7 +18,7 @@
 #############################################
 # Minimal version of Ninja required by this file
 
-ninja_required_version = 1.5
+ninja_required_version = 1.8
 
 # =============================================================================
 # Include auxiliary files.
@@ -35,12 +35,6 @@ include CMakeFiles\rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\
-
-#############################################
-# Utility command for XboxPlatform
-
-build XboxPlatform: phony
-
 # =============================================================================
 # Object build statements for SHARED_LIBRARY target BL2_PATCH
 
@@ -48,23 +42,71 @@ build XboxPlatform: phony
 #############################################
 # Order-only phony target for BL2_PATCH
 
-build cmake_object_order_depends_target_BL2_PATCH: phony || XboxPlatform
+build cmake_object_order_depends_target_BL2_PATCH: phony || .
 
-build CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\main.cpp || cmake_object_order_depends_target_BL2_PATCH
+build CMakeFiles\BL2_PATCH.dir\src\core\games\BL2Title.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core\games\BL2Title.cpp || cmake_object_order_depends_target_BL2_PATCH
   DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
-  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\core\games\BL2Title.cpp.obj.d
   FLAGS = /MT /O1 /GL /EHs-c-
-  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\include\xbox
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
   OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
-  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\core\games
+
+build CMakeFiles\BL2_PATCH.dir\src\core\games\DashTitle.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core\games\DashTitle.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\core\games\DashTitle.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\core\games
+
+build CMakeFiles\BL2_PATCH.dir\src\core\title\Title.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core\title\Title.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\core\title\Title.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\core\title
+
+build CMakeFiles\BL2_PATCH.dir\src\core\title\TitleFactory.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core\title\TitleFactory.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\core\title\TitleFactory.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\core\title
 
 build CMakeFiles\BL2_PATCH.dir\src\core\title\TitleManager.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core\title\TitleManager.cpp || cmake_object_order_depends_target_BL2_PATCH
   DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
   DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\core\title\TitleManager.cpp.obj.d
   FLAGS = /MT /O1 /GL /EHs-c-
-  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\include\xbox
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
   OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
   OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\core\title
+
+build CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\main.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src
+
+build CMakeFiles\BL2_PATCH.dir\src\platform\XboxInput.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\platform\XboxInput.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\platform\XboxInput.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\platform
+
+build CMakeFiles\BL2_PATCH.dir\src\platform\XboxPlatform.cpp.obj: CXX_COMPILER__BL2_PATCH_unscanned_ C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\platform\XboxPlatform.cpp || cmake_object_order_depends_target_BL2_PATCH
+  DEFINES = -DBL2_PATCH_EXPORTS -DNDEBUG -D_MSC_VER=1300 -D_XBOX
+  DEP_FILE = CMakeFiles\BL2_PATCH.dir\src\platform\XboxPlatform.cpp.obj.d
+  FLAGS = /MT /O1 /GL /EHs-c-
+  INCLUDES = -IC:\Users\pixel\Documents\360\Xkelib\xkelib -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\win32 -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\CodeAnalysis -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xbox\sys -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd -IC:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\include\xstd\threading -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:platform" -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\src\core -I"C:\Users\pixel\Documents\360\Projs\BL2_PATCH\$$<INSTALL_INTERFACE:title" -IC:\Users\pixel\Documents\360\include\xbox -IC:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\include
+  OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
+  OBJECT_FILE_DIR = CMakeFiles\BL2_PATCH.dir\src\platform
 
 
 # =============================================================================
@@ -74,9 +116,9 @@ build CMakeFiles\BL2_PATCH.dir\src\core\title\TitleManager.cpp.obj: CXX_COMPILER
 #############################################
 # Link the shared library BL2_PATCH.dll
 
-build BL2_PATCH.dll BL2_PATCH.lib BL2_PATCH.xex | ${cmake_ninja_workdir}BL2_PATCH.xex: CXX_SHARED_LIBRARY_LINKER__BL2_PATCH_ CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj CMakeFiles\BL2_PATCH.dir\src\core\title\TitleManager.cpp.obj || XboxPlatform
+build BL2_PATCH.dll BL2_PATCH.lib BL2_PATCH.xex | ${cmake_ninja_workdir}BL2_PATCH.xex: CXX_SHARED_LIBRARY_LINKER__BL2_PATCH_ CMakeFiles\BL2_PATCH.dir\src\core\games\BL2Title.cpp.obj CMakeFiles\BL2_PATCH.dir\src\core\games\DashTitle.cpp.obj CMakeFiles\BL2_PATCH.dir\src\core\title\Title.cpp.obj CMakeFiles\BL2_PATCH.dir\src\core\title\TitleFactory.cpp.obj CMakeFiles\BL2_PATCH.dir\src\core\title\TitleManager.cpp.obj CMakeFiles\BL2_PATCH.dir\src\main.cpp.obj CMakeFiles\BL2_PATCH.dir\src\platform\XboxInput.cpp.obj CMakeFiles\BL2_PATCH.dir\src\platform\XboxPlatform.cpp.obj | C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\lib\XexUtils.lib
   LINK_FLAGS = /DLL /ENTRY:DllMain /ALIGN:128,4096 /FIXED:NO /XEX:NO
-  LINK_LIBRARIES = xboxkrnl.lib  xapilib.lib
+  LINK_LIBRARIES = xboxkrnl.lib  xapilib.lib  C:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\lib\XexUtils.lib
   LINK_PATH = /LIBPATH:C:\Users\pixel\Documents\360\lib\xbox   /LIBPATH:C:\Users\pixel\Documents\360\Xkelib\xkelib   /LIBPATH:C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\lib\win32\vs2010   /LIBPATH:C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\lib\x64\vs2010   /LIBPATH:C:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\lib\xbox
   OBJECT_DIR = CMakeFiles\BL2_PATCH.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\pixel\Documents\360\Projs\BL2_PATCH\build && C:\Users\pixel\Documents\360\bin\win32\imagexex.exe /IN:C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/BL2_PATCH.dll /OUT:C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/BL2_PATCH.xex /CONFIG:C:/Users/pixel/Documents/360/Projs/BL2_PATCH/Application.xml"
@@ -138,6 +180,34 @@ build xdk\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
 build xdk\rebuild_cache: phony xdk\CMakeFiles\rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/pixel/Documents/360/Projs/BL2_PATCH/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build third_party\XexUtils\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\third_party\XexUtils && "C:\Program Files\JetBrains\CLion 2025.3.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build third_party\XexUtils\edit_cache: phony third_party\XexUtils\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build third_party\XexUtils\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\third_party\XexUtils && "C:\Program Files\JetBrains\CLion 2025.3.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\pixel\Documents\360\Projs\BL2_PATCH -BC:\Users\pixel\Documents\360\Projs\BL2_PATCH\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build third_party\XexUtils\rebuild_cache: phony third_party\XexUtils\CMakeFiles\rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
 
 build BL2_PATCH: phony BL2_PATCH.dll
@@ -150,7 +220,14 @@ build BL2_PATCH: phony BL2_PATCH.dll
 #############################################
 # Folder: C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build
 
-build all: phony XboxPlatform BL2_PATCH.dll xdk\all
+build all: phony BL2_PATCH.dll xdk\all third_party\XexUtils\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/pixel/Documents/360/Projs/BL2_PATCH/build/third_party/XexUtils
+
+build third_party\XexUtils\all: phony
 
 # =============================================================================
 
@@ -164,16 +241,30 @@ build xdk\all: phony
 
 
 #############################################
+# Phony target to force glob verification run.
+
+build C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\VerifyGlobs.cmake_force: phony
+
+
+#############################################
+# Re-run CMake to check if globbed directories changed.
+
+build C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\cmake.verify_globs: VERIFY_GLOBS | C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\VerifyGlobs.cmake_force
+  pool = console
+  restat = 1
+
+
+#############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\cmake_install.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\xdk\cmake_install.cmake: RERUN_CMAKE | C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Platform\Generic.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\CMakeLists.txt C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXenon.toolchain.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXex.cmake C$:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\CMakeLists.txt CMakeCache.txt CMakeFiles\4.1.2\CMakeCXXCompiler.cmake CMakeFiles\4.1.2\CMakeSystem.cmake
+build build.ninja C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\cmake_install.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\xdk\cmake_install.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\third_party\XexUtils\cmake_install.cmake: RERUN_CMAKE C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\cmake.verify_globs | C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\VerifyGlobs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Platform\Generic.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\CMakeLists.txt C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXenon.toolchain.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXex.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\CMakeLists.txt C$:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\CMakeLists.txt CMakeCache.txt CMakeFiles\4.1.2\CMakeCXXCompiler.cmake CMakeFiles\4.1.2\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Platform\Generic.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\CMakeLists.txt C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXenon.toolchain.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXex.cmake C$:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\CMakeLists.txt CMakeCache.txt CMakeFiles\4.1.2\CMakeCXXCompiler.cmake CMakeFiles\4.1.2\CMakeSystem.cmake: phony
+build C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\build\CMakeFiles\VerifyGlobs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Compiler\MSVC.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake C$:\Program$ Files\JetBrains\CLion$ 2025.3.1\bin\cmake\win\x64\share\cmake-4.1\Modules\Platform\Generic.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\CMakeLists.txt C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXenon.toolchain.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\cmake\XdkXex.cmake C$:\Users\pixel\Documents\360\Projs\BL2_PATCH\third_party\XexUtils\CMakeLists.txt C$:\Users\pixel\Documents\360\XBOX360_SDK_21256.3\CMakeLists.txt CMakeCache.txt CMakeFiles\4.1.2\CMakeCXXCompiler.cmake CMakeFiles\4.1.2\CMakeSystem.cmake: phony
 
 
 #############################################

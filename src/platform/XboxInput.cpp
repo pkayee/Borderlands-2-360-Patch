@@ -3,3 +3,13 @@
 //
 
 #include "XboxInput.h"
+
+namespace platform {
+    void IInput::poll() {
+
+    }
+
+    void XboxInput::poll() {
+
+    }
+}
