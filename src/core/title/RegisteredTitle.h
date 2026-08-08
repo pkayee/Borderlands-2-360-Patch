@@ -13,11 +13,11 @@ namespace core {
     template<typename Derived>
     class RegisteredTitle : public Title {
     public:
-        RegisteredTitle(platform::PlatformServices &platform)
-        : Title(platform) {}
+        RegisteredTitle(platform::PlatformServices &platform, hooks::IHookService &hook)
+        : Title(platform, hook) {}
 
         static bool registerSelf(uint32_t titleId) {
-            std::cout << "\n" << "registerSelf called with TID: " << titleId;
+            std::cout << "\n" << "[RegisteredTitle::registerSelf] - called with TID: " << titleId;
 
             // pass memory of our create function which then is used by creator to return our new object of our
             // derived class
@@ -25,8 +25,8 @@ namespace core {
             return true;
         }
     private:
-        static Title* create(platform::PlatformServices &platform) {
-            return new Derived(platform);
+        static Title* create(platform::PlatformServices &platform, hooks::IHookService &hook) {
+            return new Derived(platform, hook);
         }
     };
 }

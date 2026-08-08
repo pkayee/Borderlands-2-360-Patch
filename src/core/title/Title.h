@@ -2,12 +2,14 @@
 #include "cstdint"
 #include <platform/PlatformServices.h>
 
+#include "hooks/IHookService.h"
+
 
 namespace core {
     class Title {
     public:
-        Title(platform::PlatformServices &platformServices)
-        : m_platform(platformServices),
+        Title(platform::PlatformServices &platformServices, hooks::IHookService &hook)
+        : m_platform(platformServices), m_hook(hook),
         m_titleId(m_platform.system.getCurrentTitleId()), m_titleVersion(m_platform.system.getTitleUpdateVersion()) {
 
         }
@@ -26,6 +28,8 @@ namespace core {
 
     protected:
         platform::PlatformServices m_platform;
+        hooks::IHookService &m_hook;
+
     private:
         Title(const Title &);
         Title& operator=(const Title &);

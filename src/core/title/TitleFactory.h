@@ -3,6 +3,7 @@
 #include "memory"
 #include "function.h"
 #include <platform/PlatformServices.h>
+#include <hooks/IHookService.h>
 
 
 #include "functional"
@@ -14,10 +15,13 @@ namespace core {
     public:
         // function pointer that returns our newly constructed derived class
         // see RegisteredTitle.h for more context
-        typedef Title* (*Creator)(platform::PlatformServices &platformServices);
+        typedef Title* (*Creator)(platform::PlatformServices &platformServices, hooks::IHookService &hook);
 
         static void registerTitle(uint32_t titleId, Creator creator);
-        static Title* create(uint32_t titleId, std::string& titleVersion, platform::PlatformServices &platformServices);
+        static Title* create(
+            uint32_t titleId, std::string& titleVersion, platform::PlatformServices &platformServices,
+            hooks::IHookService &hook
+        );
 
     private:
         static std::map<uint32_t, Creator>& registry();

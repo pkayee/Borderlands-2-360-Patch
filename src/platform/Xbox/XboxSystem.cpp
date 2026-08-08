@@ -21,7 +21,6 @@ namespace platform {
     }
 
     void XboxSystem::notify(const std::wstring &message) {
-        std::cerr << "Platform notify called";
         XNotifyQueueUI(0 , 0, XNOTIFY_SYSTEM, message.c_str(), nullptr);
     }
 
@@ -34,7 +33,6 @@ namespace platform {
     }
 
     std::string XboxSystem::getTitleUpdateVersion() {
-        std::cerr << "\n" << "Platform title version called ";
         HANDLE hGameModule = GetModuleHandle(NULL);
 
         LDR_DATA_TABLE_ENTRY *pDataTable = static_cast<LDR_DATA_TABLE_ENTRY *>(hGameModule);

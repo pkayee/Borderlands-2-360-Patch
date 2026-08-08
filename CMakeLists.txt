@@ -6,7 +6,11 @@ include(XdkXex)
 add_subdirectory(${CMAKE_SOURCE_DIR}/../../XBOX360_SDK_21256.3 ${CMAKE_BINARY_DIR}/xdk)
 add_subdirectory(third_party/XexUtils)
 add_library(XboxPlatform INTERFACE
-        src/platform/PlatformServices.h)
+        src/platform/PlatformServices.h
+        src/hooks/IHookService.h
+        src/hooks/PowerPCHookService.cpp
+        src/hooks/PowerPCHookService.h
+)
 add_library(XboxTitles INTERFACE)
 
 target_include_directories(XboxPlatform

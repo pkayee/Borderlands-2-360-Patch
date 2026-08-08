@@ -2,15 +2,17 @@
 #include <platform/Xbox/XboxInput.h>
 #include <title/TitleManager.h>
 
+#include <hooks/PowerPCHookService.h>
 #include "platform/Xbox/XboxInput.h"
 
+hooks::PowerPCHookService *g_hooks;
 platform::XboxSystem g_platform;
 platform::XboxInput g_input;
 core::TitleManager *g_pManager = nullptr;
 HANDLE g_threadHandle = INVALID_HANDLE_VALUE;
 
 DWORD WINAPI Attach(HANDLE hModule) {
-    g_pManager = new core::TitleManager(g_platform, g_input);
+    g_pManager = new core::TitleManager(g_platform, g_input, *g_hooks);
     g_pManager->run();
     return 0;
 }
