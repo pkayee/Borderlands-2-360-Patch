@@ -3,6 +3,12 @@
 #include <XexUtils.h>
 #include <hooks/PowePCPatching.h>
 
+extern "C" {
+    DECLSPEC_IMPORT void* NTAPI ExAllocatePoolWithTag(DWORD PoolType, SIZE_T NumberOfBytes, DWORD Tag);
+    DECLSPEC_IMPORT void NTAPI ExFreePool(PVOID P);
+}
+
+
 namespace hooks {
     DWORD PowerPCHookService::install(DWORD address, void *destination) {
         if (!MmIsAddressValid((PVOID)address)) {
@@ -10,14 +16,32 @@ namespace hooks {
             return 0;
         }
 
-        HookEntry entry;
+        HookEntry& entry = m_hooks[address];
         memcpy(entry.originalASM, (PVOID)address, 0x10);
+        void* stubMem = ExAllocatePoolWithTag(0, 0x20, 'Hook');
+        if (!stubMem) {
+            std::cerr << "\n[PowerPCHookService::install] - Failed to allocate stub memory!";
+            return 0;
+        }
+
+        entry.stubASM = (BYTE*)stubMem;
+
         memcpy(entry.stubASM, (PVOID)address, 0x10);
-
         m_ppcPatching.PatchInJump((PDWORD)(entry.stubASM + 0x10), (PVOID)(address + 0x10), FALSE);
-        m_ppcPatching.PatchInJump((PDWORD)address, destination, FALSE);
 
-        m_hooks[address] = entry;
+        KeFlushCacheRange(entry.stubASM, 0x20);
+        __sync();
+
+        DWORD oldProtect;
+        VirtualProtect((PVOID)address, 0x10, PAGE_EXECUTE_READWRITE, &oldProtect);
+
+        m_ppcPatching.PatchInJump((PDWORD)address, destination, false);
+
+        VirtualProtect((PVOID)address, 0x10, oldProtect, &oldProtect);
+
+        KeFlushCacheRange((PVOID)address, 0x10);
+        __sync();
+
         std::cerr << "\n[PowerPCHookService::install] - Address:" <<address << " hooked!";
         return address;
     }
@@ -25,7 +49,7 @@ namespace hooks {
     void *PowerPCHookService::callOriginal(DWORD handle, void *a1, void *a2, void *a3) {
         std::map<DWORD, HookEntry>::iterator it = m_hooks.find(handle);
 
-        if (it == m_hooks.end()) {
+        if (it == m_hooks.end() || !it->second.stubASM) {
             return NULL;
         }
 
@@ -36,8 +60,17 @@ namespace hooks {
 
     void PowerPCHookService::uninstall(DWORD handle) {
         std::map<DWORD, HookEntry>::iterator it = m_hooks.find(handle);
+
         if (it != m_hooks.end() && MmIsAddressValid((PVOID)handle)) {
             memcpy((PVOID)handle, it->second.originalASM, 0x10);
+
+            KeFlushCacheRange((PVOID)handle, 0x10);
+            __sync();
+
+            if (it->second.stubASM) {
+                ExFreePool(it->second.stubASM);
+            }
+
             m_hooks.erase(it);
             std::cerr << "\n[PowerPCHookService::uninstall] - Hook Uninstalled";
         }

@@ -5,13 +5,15 @@
 #include <hooks/PowerPCHookService.h>
 #include "platform/Xbox/XboxInput.h"
 
-hooks::PowerPCHookService *g_hooks;
+hooks::PowerPCHookService *g_hooks = nullptr;
+hooks::PowerPCPatching g_patching;
 platform::XboxSystem g_platform;
 platform::XboxInput g_input;
 core::TitleManager *g_pManager = nullptr;
 HANDLE g_threadHandle = INVALID_HANDLE_VALUE;
 
 DWORD WINAPI Attach(HANDLE hModule) {
+    g_hooks = new hooks::PowerPCHookService(g_patching);
     g_pManager = new core::TitleManager(g_platform, g_input, *g_hooks);
     g_pManager->run();
     return 0;

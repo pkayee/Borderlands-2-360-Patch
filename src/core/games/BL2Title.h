@@ -23,5 +23,6 @@ namespace games {
         static void RefreshHook(void *context, void *stack, void *result);
         static hooks::IHookService* s_activeHookService;
         static DWORD s_activeRefreshHandle;
+        static DWORD WINAPI InstallHookThread(LPVOID lpParam);
     };
 };
