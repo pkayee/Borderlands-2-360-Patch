@@ -10,7 +10,7 @@ namespace core {
         registry()[titleId] = creator;
     }
 
-    Title* TitleFactory::create(uint32_t titleId, std::string& titleVersion, platform::IPlatform &platform, platform::IInput &input) {
+    Title* TitleFactory::create(uint32_t titleId, std::string& titleVersion, platform::PlatformServices &platformServices) {
         std::map<uint32_t, Creator>::iterator it = registry().find(titleId);
 
         if (it == registry().end() || it->second == NULL) {
@@ -23,7 +23,7 @@ namespace core {
         }
 
         std::cerr << "\n" << "Title:" << titleId <<" found in registry";
-        return it->second(platform, input);
+        return it->second(platformServices);
     }
 
     std::map<uint32_t, TitleFactory::Creator> &TitleFactory::registry() {

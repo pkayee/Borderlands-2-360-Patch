@@ -5,7 +5,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(XdkXex)
 add_subdirectory(${CMAKE_SOURCE_DIR}/../../XBOX360_SDK_21256.3 ${CMAKE_BINARY_DIR}/xdk)
 add_subdirectory(third_party/XexUtils)
-add_library(XboxPlatform INTERFACE)
+add_library(XboxPlatform INTERFACE
+        src/platform/PlatformServices.h)
 add_library(XboxTitles INTERFACE)
 
 target_include_directories(XboxPlatform

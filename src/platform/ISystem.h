@@ -3,9 +3,9 @@
 #include "string"
 
 namespace platform {
-    class IPlatform {
+    class ISystem {
     public:
-        virtual ~IPlatform() {};
+        virtual ~ISystem() {};
         virtual void reboot() = 0;
         virtual void notify(const std::wstring &message) = 0;
         virtual bool isDevkit() = 0;

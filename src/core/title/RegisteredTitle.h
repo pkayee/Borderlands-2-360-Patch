@@ -13,8 +13,8 @@ namespace core {
     template<typename Derived>
     class RegisteredTitle : public Title {
     public:
-        RegisteredTitle(platform::IPlatform &platform, platform::IInput &input)
-        : Title(platform, input) {}
+        RegisteredTitle(platform::PlatformServices &platform)
+        : Title(platform) {}
 
         static bool registerSelf(uint32_t titleId) {
             std::cout << "\n" << "registerSelf called with TID: " << titleId;
@@ -25,8 +25,8 @@ namespace core {
             return true;
         }
     private:
-        static Title* create(platform::IPlatform &platform, platform::IInput &input) {
-            return new Derived(platform, input);
+        static Title* create(platform::PlatformServices &platform) {
+            return new Derived(platform);
         }
     };
 }

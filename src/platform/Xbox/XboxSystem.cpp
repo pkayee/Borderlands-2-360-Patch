@@ -2,7 +2,7 @@
 // Created by pixel on 8/5/2026.
 //
 
-#include "XboxPlatform.h"
+#include "XboxSystem.h"
 
 typedef void (*XNOTIFYQUEUEUI)(uint32_t type, uint32_t userIndex, uint64_t areas, const wchar_t *displayText, void *pContextData);
 
@@ -16,24 +16,24 @@ void *ResolveFunction(const std::string &moduleName, uint32_t ordinal) {
 static XNOTIFYQUEUEUI XNotifyQueueUI = static_cast<XNOTIFYQUEUEUI>(ResolveFunction("xam.xex", 656));
 
 namespace platform {
-    void XboxPlatform::reboot() {
+    void XboxSystem::reboot() {
 
     }
 
-    void XboxPlatform::notify(const std::wstring &message) {
+    void XboxSystem::notify(const std::wstring &message) {
         std::cerr << "Platform notify called";
         XNotifyQueueUI(0 , 0, XNOTIFY_SYSTEM, message.c_str(), nullptr);
     }
 
-    uint32_t XboxPlatform::getFirmwareVersion() {
+    uint32_t XboxSystem::getFirmwareVersion() {
         return XboxKrnlVersion->Build;
     }
 
-    bool XboxPlatform::isDevkit() {
+    bool XboxSystem::isDevkit() {
         return false;
     }
 
-    std::string XboxPlatform::getTitleUpdateVersion() {
+    std::string XboxSystem::getTitleUpdateVersion() {
         std::cerr << "\n" << "Platform title version called ";
         HANDLE hGameModule = GetModuleHandle(NULL);
 

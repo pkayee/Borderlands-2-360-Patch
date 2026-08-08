@@ -1,5 +1,5 @@
 #pragma once
-#include "IPlatform.h"
+#include "../ISystem.h"
 #include "xtl.h"
 
 #include <XexUtils.h>
@@ -19,10 +19,10 @@ extern "C" {
 }
 
 namespace platform {
-    class XboxPlatform : public IPlatform {
+    class XboxSystem : public ISystem {
     public:
-        XboxPlatform() {};
-        ~XboxPlatform() {};
+        XboxSystem() {};
+        ~XboxSystem() {};
 
         void reboot() override;
         void notify(const std::wstring &message);
@@ -33,7 +33,7 @@ namespace platform {
 
         bool isDevkit();
     private:
-        XboxPlatform(const XboxPlatform &);
-        XboxPlatform &operator=(const XboxPlatform &);
+        XboxSystem(const XboxSystem &);
+        XboxSystem &operator=(const XboxSystem &);
     };
 }

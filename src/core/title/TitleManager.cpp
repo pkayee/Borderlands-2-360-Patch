@@ -21,8 +21,8 @@ extern "C" {
 
 namespace core {
     Title* TitleManager::m_currentTitle = NULL;
-    TitleManager::TitleManager(platform::IPlatform &platform, platform::IInput &input)
-        : m_platform(platform), m_input(input), m_running(true) {
+    TitleManager::TitleManager(platform::ISystem &system, platform::IInput &input)
+        : m_platform(system, input), m_running(true), m_currentTitleId(0) {
     }
 
     void TitleManager::init() {
@@ -31,7 +31,7 @@ namespace core {
 
     void TitleManager::run() {
         while (m_running) {
-            uint32_t newTitleId = m_platform.getCurrentTitleId();
+            uint32_t newTitleId = m_platform.system.getCurrentTitleId();
             if (newTitleId != 0 && newTitleId != m_currentTitleId) {
                 initNewTitle(newTitleId);
             }
@@ -47,10 +47,10 @@ namespace core {
         std::cerr << "\n" << "Initializing title:" << newTitleId << std::endl;
 
         m_currentTitleId = newTitleId;
-        m_currentTitleVersion = m_platform.getTitleUpdateVersion();
+        m_currentTitleVersion = m_platform.system.getTitleUpdateVersion();
         std::cout << "TitleUpdate = " << m_currentTitleVersion;
 
-        m_currentTitle = TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform, m_input);
+        m_currentTitle = TitleFactory::create(m_currentTitleId, m_currentTitleVersion, m_platform);
 
         if (m_currentTitle) {
             std::cerr << "\n" << "Hooking title on open";

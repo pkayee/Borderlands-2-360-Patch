@@ -1,14 +1,14 @@
 #pragma once
 #include "cstdint"
-#include <platform/IPlatform.h>
-#include <platform/IInput.h>
+#include <platform/PlatformServices.h>
+
 
 namespace core {
     class Title {
     public:
-        Title(platform::IPlatform &platform, platform::IInput &input)
-        : m_platform(platform), m_input(input),
-        m_titleId(m_platform.getCurrentTitleId()), m_titleVersion(m_platform.getTitleUpdateVersion()) {
+        Title(platform::PlatformServices &platformServices)
+        : m_platform(platformServices),
+        m_titleId(m_platform.system.getCurrentTitleId()), m_titleVersion(m_platform.system.getTitleUpdateVersion()) {
 
         }
 
@@ -25,8 +25,7 @@ namespace core {
         bool requestReboot();
 
     protected:
-        platform::IPlatform &m_platform;
-        platform::IInput &m_input;
+        platform::PlatformServices m_platform;
     private:
         Title(const Title &);
         Title& operator=(const Title &);

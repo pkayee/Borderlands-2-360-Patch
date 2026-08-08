@@ -1,10 +1,10 @@
-﻿#include <platform/XboxPlatform.h>
-#include <platform/XboxInput.h>
+﻿#include <platform/Xbox/XboxSystem.h>
+#include <platform/Xbox/XboxInput.h>
 #include <title/TitleManager.h>
 
-#include "platform/XboxInput.h"
+#include "platform/Xbox/XboxInput.h"
 
-platform::XboxPlatform g_platform;
+platform::XboxSystem g_platform;
 platform::XboxInput g_input;
 core::TitleManager *g_pManager = nullptr;
 HANDLE g_threadHandle = INVALID_HANDLE_VALUE;

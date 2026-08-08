@@ -1,15 +1,14 @@
 #pragma once
 #include <cstdint>
 #include <xtl.h>
-#include <platform/IPlatform.h>
+#include <platform/PlatformServices.h>
 #include <memory>
 #include "Title.h"
-#include "platform/IInput.h"
 
 namespace core {
     class TitleManager {
     public:
-        TitleManager(platform::IPlatform &platform, platform::IInput &input);
+        TitleManager(platform::ISystem &system, platform::IInput &input);
         void init();
         void run();
         void stop() { m_running = false; }
@@ -20,7 +19,6 @@ namespace core {
         std::string m_currentTitleVersion;
         HANDLE m_handle;
         static Title* m_currentTitle;
-        platform::IPlatform &m_platform;
-        platform::IInput &m_input;
+        platform::PlatformServices m_platform;
     };
 }

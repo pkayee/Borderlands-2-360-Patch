@@ -6,8 +6,8 @@ namespace games {
     const uint32_t kDashboardId = 0xFFFE07D1;
     class DashboardTitle : public core::RegisteredTitle<DashboardTitle> {
     public:
-        DashboardTitle(platform::IPlatform &platform, platform::IInput &input) : RegisteredTitle(platform, input) {}
-        void onOpen() { m_platform.notify(L"Plugin is working!"); }
+        DashboardTitle(platform::PlatformServices &platform) : RegisteredTitle(platform) {}
+        void onOpen() { m_platform.system.notify(L"Plugin is working!"); }
         void onClose();
     private:
         void initMenu();
