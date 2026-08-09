@@ -3,9 +3,15 @@
 #include <XexUtils.h>
 #include <hooks/PowePCPatching.h>
 
+#ifndef DECLSPEC_IMPORT
+#define DECLSPEC_IMPORT
+#endif
+
 extern "C" {
-    DECLSPEC_IMPORT void* NTAPI ExAllocatePoolWithTag(DWORD PoolType, SIZE_T NumberOfBytes, DWORD Tag);
     DECLSPEC_IMPORT void NTAPI ExFreePool(PVOID P);
+    DECLSPEC_IMPORT void* NTAPI ExAllocatePoolWithTag(DWORD PoolType, SIZE_T NumberOfBytes, DWORD Tag);
+    DECLSPEC_IMPORT DWORD __stdcall MmQueryAddressProtect(PVOID Address);
+    DECLSPEC_IMPORT NTSTATUS __stdcall MmSetAddressProtect(PVOID Address, SIZE_T Size, ULONG NewProtect);
 }
 
 
@@ -18,28 +24,61 @@ namespace hooks {
 
         HookEntry& entry = m_hooks[address];
         memcpy(entry.originalASM, (PVOID)address, 0x10);
-        void* stubMem = ExAllocatePoolWithTag(0, 0x20, 'Hook');
+        void* stubMem = ExAllocatePoolWithTag(0, 0x40, 'Hook');
         if (!stubMem) {
             std::cerr << "\n[PowerPCHookService::install] - Failed to allocate stub memory!";
+            m_hooks.erase(address);
             return 0;
         }
 
         entry.stubASM = (BYTE*)stubMem;
 
-        memcpy(entry.stubASM, (PVOID)address, 0x10);
-        m_ppcPatching.PatchInJump((PDWORD)(entry.stubASM + 0x10), (PVOID)(address + 0x10), FALSE);
+        DWORD stubOffset = 0;
+        for (int i = 0; i < 4; i++) {
+            DWORD instrAddr = address + (i* 4);
+            DWORD instr = *(DWORD*)instrAddr;
+            BYTE opcode = (BYTE)((instr >> 24) & 0xFF);
 
-        KeFlushCacheRange(entry.stubASM, 0x20);
-        __sync();
+            if (opcode == 0x48 || opcode == 0x4B) {
+                int target = m_ppcPatching.GetBranchCall(instrAddr);
+                bool isLinked = (instr & 1) != 0;
 
-        DWORD oldProtect;
-        VirtualProtect((PVOID)address, 0x10, PAGE_EXECUTE_READWRITE, &oldProtect);
+                std::cerr << "\n[PowerPCHookService::install] - Branch found at +0x"
+                << std::hex << (i*4)
+                << ", target: 0x" << target;
+
+                m_ppcPatching.PatchInJump((PDWORD)(entry.stubASM + stubOffset), (void*)target, isLinked ? TRUE : FALSE);
+                stubOffset += 0x10;
+
+                if (!isLinked) {
+                    break;
+                } else {
+                    *(DWORD*)(entry.stubASM + stubOffset) = instr;
+                    stubOffset += 4;
+                }
+            }
+        }
+
+        if (stubOffset < 0x30) {
+            m_ppcPatching.PatchInJump((PDWORD)(entry.stubASM + stubOffset), (PVOID)(address + 0x10), FALSE);
+        }
+
+        DWORD currentProtect = MmQueryAddressProtect((PVOID)address);
+        std::cerr << "\n[PowerPCHookService::install] - Current protect: 0x" << std::hex << currentProtect;
+
+        DWORD oldProtect = currentProtect;
+        NTSTATUS status = MmSetAddressProtect((PVOID)address, 0x10, PAGE_EXECUTE_READWRITE);
+        std::cerr << "\n[PowerPCHookService::install] - MmSetAddressProtect status: " << status;
+
+        if (!NT_SUCCESS(status)) {
+            std::cerr << "\n[PowerPCHookService::install] - Protection change FAILED, aborting!";
+            ExFreePool(entry.stubASM);
+            m_hooks.erase(address);
+            return 0;
+        }
 
         m_ppcPatching.PatchInJump((PDWORD)address, destination, false);
-
-        VirtualProtect((PVOID)address, 0x10, oldProtect, &oldProtect);
-
-        KeFlushCacheRange((PVOID)address, 0x10);
+        MmSetAddressProtect((PVOID)address, 0x10, oldProtect);
         __sync();
 
         std::cerr << "\n[PowerPCHookService::install] - Address:" <<address << " hooked!";

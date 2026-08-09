@@ -9,7 +9,7 @@ namespace core {
     class Title {
     public:
         Title(platform::PlatformServices &platformServices, hooks::IHookService &hook)
-        : m_platform(platformServices), m_hook(hook),
+        : m_platform(platformServices), m_hooks(hook),
         m_titleId(m_platform.system.getCurrentTitleId()), m_titleVersion(m_platform.system.getTitleUpdateVersion()) {
 
         }
@@ -28,7 +28,7 @@ namespace core {
 
     protected:
         platform::PlatformServices m_platform;
-        hooks::IHookService &m_hook;
+        hooks::IHookService &m_hooks;
 
     private:
         Title(const Title &);

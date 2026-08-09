@@ -9,35 +9,40 @@ namespace games {
     bool BL2Title::s_registered = BL2Title::registerSelf(kBL2TitleId);
 
     DWORD WINAPI BL2Title::InstallHookThread(LPVOID lpParam) {
-        BL2Title* self = static_cast<BL2Title*>(lpParam);
-        DWORD targetAddr = 0x82e9d718;
+        std::cerr << "\n[BL2Title::InstallHookThread] - Waiting for BL2 code to unpack...";
 
-        std::cerr << "[BL2Title::InstallHookThread] - Waiting for BL2 code to unpack...";
+        const int maxAttempts = 20;
+        const int delayMs = 500;
+        bool ready = false;
 
-        while (true) {
-            __try {
-                if (MmIsAddressValid((PVOID)targetAddr)) {
-                    DWORD firstInstruction = *(DWORD*)targetAddr;
-                    if (firstInstruction != 0x00000000 && firstInstruction != 0xFFFFFFFF) {
-                        std::cerr << "\n[BL2Title::InstallHookThread] - Code found, waiting for SNet transition to settle...";
-                        Sleep(12000);
-                        s_instance->m_platform.system.notify(L"[BL2Title::InstallHookThread]");
-                        self->m_refreshHandle = self->m_hook.install(targetAddr, (void*)&RefreshHook);
-                        s_activeHookService = &self->m_hook;
-                        s_activeRefreshHandle = self->m_refreshHandle;
+        for (int attempt = 0; attempt < maxAttempts; attempt++) {
+            Sleep(delayMs);
 
-                        std::cerr << "\n[BL2Title::InstallHookThread()] - installing hook successful at " << std::hex << targetAddr;
-                        break;
-                    }
-                }
+            if (MmIsAddressValid((PVOID)0x82e9d718)) {
+                std::cerr << "\n[BL2Title::InstallHookThread] - Address valid on attempt " << attempt
+                           << ", waiting extra settle time...";
+                Sleep(2000);
+                ready = true;
+                break;
             }
-            __except (EXCEPTION_EXECUTE_HANDLER) {
-                s_instance->m_platform.system.notify(L"[BL2Title::InstallHookThread] - Failed to install hook exception occured");
-            }
-            Sleep(200);
-
         }
-        return 0;
+
+        if (!ready) {
+            std::cerr << "\n[BL2Title::InstallHookThread] - Gave up waiting, hook NOT installed";
+            return 1;
+        }
+
+        std::cerr << "\n[BL2Title::InstallHookThread] - Proceeding to install hook";
+        s_instance->m_refreshHandle = s_instance->m_hooks.install(0x82e9d718, (void*)&RefreshHook);
+
+        if (s_instance->m_hooks.isInstalled(s_instance->m_refreshHandle)) {
+            std::cerr << "\n[BL2Title::InstallHookThread] - Hook installed successfully";
+
+            return 0;
+        } else {
+            std::cerr << "\n[BL2Title::InstallHookThread] - Hook install FAILED";
+            return 1;
+        }
     }
 
     void BL2Title::onOpen() {
@@ -51,8 +56,8 @@ namespace games {
     }
 
     void BL2Title::onClose() {
-        if (m_hook.isInstalled(m_refreshHandle))
-            m_hook.uninstall(m_refreshHandle);
+        if (m_hooks.isInstalled(m_refreshHandle))
+            m_hooks.uninstall(m_refreshHandle);
         s_activeHookService = NULL;
     }
 
